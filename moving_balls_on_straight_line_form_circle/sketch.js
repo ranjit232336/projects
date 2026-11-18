@@ -48,13 +48,12 @@ function setup(windowW, windowH, noOfGrooves, thickness) {
     thickness,
     angle,
   );
-//   console.log(grooves);
-  
+  //   console.log(grooves);
 
   let balls = b.generateBalls(grooves);
-//   balls = b.resetBalls( balls , grooves ) ;
-//   console.log(balls);
-  
+  //   balls = b.resetBalls( balls , grooves ) ;
+  //   console.log(balls);
+
   const movement = 0;
 
   return { circle, grooves, balls, movement };
