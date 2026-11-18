@@ -1,75 +1,68 @@
-const r = require("raylib") ;
-const m = require("./math") ;
-const c = require("./circle") ;
-const l = require("./lines") ;
-const p = require("./points") ;
+const r = require("raylib");
+const m = require("./math");
+const c = require("./circle");
+const l = require("./lines");
+const p = require("./points");
 
-function running(){
-
-    return !r.WindowShouldClose() ;
-
+function running() {
+  return !r.WindowShouldClose();
 }
 
-function teardown(){
-    return r.CloseWindow() ;
+function teardown() {
+  return r.CloseWindow();
 }
 
-function draw(points , circles , colors){
-
-    r.BeginDrawing() ;
-    // r.ClearBackground(r.BLACK) ;
-    c.drawCircles( circles ) ;
-    // c.drawCurve( circles[ circles.length - 1 ] ) ;
-    l.drawLines(points , colors) ;
-    r.EndDrawing();
-
+function draw(points, circles, colors) {
+  r.BeginDrawing();
+  // r.ClearBackground(r.BLACK) ;
+  c.drawCircles(circles);
+  //   c.drawCurve(circles[circles.length - 1]);
+  l.drawLines(points, colors);
+  r.EndDrawing();
 }
 
-function update(circles , angles){
-
-    c.updateCircle( circles , angles ) ;
-
+function update(circles, angles) {
+  c.updateCircle(circles, angles);
 }
 
-function setup(){
+function setup() {
+  const screenWidth = 1500;
+  const screenHeight = 1000;
+  const screenTittle = "Multiples Circle Movement";
 
-    const screenWidth = 1500 ;
-    const screenHeight = 1000 ;
-    const screenTittle = "Multiples Circle Movement" ;
+  r.SetTraceLogLevel(r.LOG_NONE);
+  r.InitWindow(screenWidth, screenHeight, screenTittle);
+  r.SetTargetFPS(50);
 
-    r.SetTraceLogLevel(r.LOG_NONE) ;
-    r.InitWindow( screenWidth , screenHeight , screenTittle ) ;
-    r.SetTargetFPS(50) ;
+  const screenConfig = { screenWidth, screenHeight, screenTittle };
 
-    const screenConfig = { screenWidth , screenHeight , screenTittle } ;
+  const radius = Math.min(screenWidth / 3, screenHeight / 3);
+  const circle0 = {
+    x: screenWidth / 2,
+    y: screenHeight / 2,
+    r: radius,
+    color: r.GREEN,
+  };
 
+  const circles = [circle0];
+  // const angles = [ 0  , 0 ] ;
+  // const noOfCircles = 2 ;
+  // // const angles = m.generateAngles(noOfCircles) ;
+  // const circles = c.generateCircles( circle0 , noOfCircles , angles ) ;
 
-    const radius = Math.min( screenWidth  / 3 , screenHeight  / 3 ) ;
-    const circle0 = { x: screenWidth / 2 , y: screenHeight / 2 , r: radius , color: r.GREEN } ;
+  const noOfPoints = 30;
 
-    const circles = [ circle0 ] ;
-    // const angles = [ 0  , 0 ] ;
-    // const noOfCircles = 2 ;
-    // // const angles = m.generateAngles(noOfCircles) ;
-    // const circles = c.generateCircles( circle0 , noOfCircles , angles ) ;
+  const colors = l.generateColors(noOfPoints);
 
-    const noOfPoints = 30 ;
+  const points = p.generatePoints(circle0, noOfPoints);
 
-    const colors = l.generateColors( noOfPoints ) ;
-
-    const points = p.generatePoints( circle0 , noOfPoints ) ;
-    
-    return {screenConfig  , circles , points , colors } ;
-
+  return { screenConfig, circles, points, colors };
 }
-
 
 module.exports = {
-
-    running ,
-    teardown ,
-    draw ,
-    update ,
-    setup ,
-
-}
+  running,
+  teardown,
+  draw,
+  update,
+  setup,
+};
