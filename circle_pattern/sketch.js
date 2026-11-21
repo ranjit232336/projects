@@ -16,7 +16,7 @@ function draw(points, circles, colors) {
   r.BeginDrawing();
   // r.ClearBackground(r.BLACK) ;
   c.drawCircles(circles);
-  //   c.drawCurve(circles[circles.length - 1]);
+
   l.drawLines(points, colors);
   r.EndDrawing();
 }
@@ -45,10 +45,6 @@ function setup() {
   };
 
   const circles = [circle0];
-  // const angles = [ 0  , 0 ] ;
-  // const noOfCircles = 2 ;
-  // // const angles = m.generateAngles(noOfCircles) ;
-  // const circles = c.generateCircles( circle0 , noOfCircles , angles ) ;
 
   const noOfPoints = 30;
 
