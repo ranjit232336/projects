@@ -20,10 +20,10 @@ function drawBalls(radius) {
     a: 255,
   };
 
-  for (let i = 0; i < 8; i++) {
+  for (let i = 0; i < 32; i++) {
     r.DrawCircle(
-      250 + radius * cos(45 * i),
-      250 + radius * sin(45 * i),
+      250 + radius * cos((45 / 4) * i),
+      250 + radius * sin((45 / 4) * i),
       10,
       color,
     );
