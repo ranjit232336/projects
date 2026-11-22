@@ -14,7 +14,7 @@ function teardown() {
 
 function draw(points, circles, colors) {
   r.BeginDrawing();
-  // r.ClearBackground(r.BLACK) ;
+  r.ClearBackground(r.BLACK);
   c.drawCircles(circles);
 
   l.drawLines(points, colors);
